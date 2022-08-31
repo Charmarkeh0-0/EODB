@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane fx:id="dpProject" expanded="true" prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxCode.ProjectSelectionFXMLController">
+    <stylesheets>
+        <URL value="@projectselectionfxml.css" />
+    </stylesheets>
+    <buttonTypes>
+      <ButtonType fx:constant="CANCEL" />
+   </buttonTypes>
+   <content>
+      <HBox fx:id="hboxBtn" alignment="CENTER" prefHeight="131.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deleteProject" prefHeight="60.0" prefWidth="160.0" text="Delete" underline="true">
+               <font>
+                  <Font name="Droid Sans Fallback" size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnGiveUp" mnemonicParsing="false" onAction="#giveUpProject" prefHeight="60.0" prefWidth="160.0" text="Give up" underline="true">
+               <HBox.margin>
+                  <Insets left="40.0" right="40.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Droid Sans Fallback" size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnFinish" mnemonicParsing="false" onAction="#finishProject" prefHeight="60.0" prefWidth="160.0" text="Finish" underline="true">
+               <font>
+                  <Font name="Droid Sans Fallback" size="21.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </HBox>
+   </content>
+   <header>
+      <HBox prefHeight="70.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="lblHeader" alignment="CENTER" prefHeight="70.0" prefWidth="300.0" text="Project 1: Test1" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="150.0" right="150.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Droid Sans Fallback" size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </header>
+</DialogPane>

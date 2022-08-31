@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane expanded="true" prefHeight="200.0" prefWidth="480.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FxCode.AddProjectController">
+    <stylesheets>
+        <URL value="@addproject.css" />
+    </stylesheets>
+    <buttonTypes>
+      <ButtonType fx:constant="CANCEL" />
+      <ButtonType fx:constant="OK" />
+   </buttonTypes>
+   <content>
+      <HBox fillHeight="false" prefHeight="100.0" prefWidth="480.0">
+         <children>
+            <Label fx:id="lblName" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="100.0" text="Name: " textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="30.0" right="10.0" top="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Droid Sans Fallback" size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtName" prefHeight="40.0" prefWidth="300.0" promptText="...">
+               <HBox.margin>
+                  <Insets right="20.0" top="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Droid Sans Fallback" size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+   </content>
+   <header>
+      <HBox prefHeight="50.0" prefWidth="480.0">
+         <children>
+            <Label fx:id="lblTop" alignment="CENTER" prefHeight="50.0" prefWidth="240.0" text="Add a new project: " textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="Droid Sans Fallback" size="19.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="120.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </header>
+</DialogPane>
