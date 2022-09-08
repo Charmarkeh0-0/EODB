@@ -144,6 +144,10 @@ public class ToDoFXMLController implements Initializable {
             }
         }
         rootItem.getChildren().addAll(branchItems);
+        for(TreeItem ti : branchItems) {
+        	ti.setExpanded(true);
+        }
+        rootItem.setExpanded(true);
         trvToDo.setShowRoot(false);
     }
     

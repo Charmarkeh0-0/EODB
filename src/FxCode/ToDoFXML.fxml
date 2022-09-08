@@ -44,7 +44,7 @@
                   <Font name="Droid Sans Fallback" size="16.0" />
                </font>
             </Button>
-            <TreeView fx:id="trvToDo" minHeight="-Infinity" minWidth="-Infinity" onContextMenuRequested="#contextTrv" onMouseClicked="#checkProject" prefHeight="700.0" prefWidth="700.0" />
+            <TreeView fx:id="trvToDo" cache="true" fixedCellSize="35.0" minHeight="-Infinity" minWidth="-Infinity" onContextMenuRequested="#contextTrv" onMouseClicked="#checkProject" prefHeight="700.0" prefWidth="700.0" showRoot="false" />
             <HBox prefHeight="50.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="txtNameTODO" prefHeight="50.0" prefWidth="440.0" promptText="Name...">
