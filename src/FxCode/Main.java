@@ -12,7 +12,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("SplashScreenFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("DashBoardFXML.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         Image icon = new Image("Images/Logo.png");
