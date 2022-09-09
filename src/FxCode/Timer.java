@@ -25,6 +25,8 @@ public class Timer extends Task<String>{
     private int idProject=1;
     private int points;
     private Date date;
+    private int timeCache = 0;
+    private int projectCache = 0;
     
     public Timer(){
         this.started = false;
@@ -38,7 +40,13 @@ public class Timer extends Task<String>{
         return this.elapsedTime / 60000;
     }
     public void setElapsedTime(double x){
-        this.elapsedTime = x * 60000;
+    	
+    	if(this.timeCache==0) {
+    		this.elapsedTime = x * 60000;
+    	}else {
+    		this.elapsedTime = this.timeCache;
+    	}
+        
     }
     
     public int getDuration(){
@@ -52,7 +60,11 @@ public class Timer extends Task<String>{
         return this.idProject;
     }
     public void setIdProject(int x){
-        this.idProject = x;
+    	if(this.timeCache == 0) {
+    		this.idProject = x;
+    	}else {
+    		this.idProject = this.projectCache;
+    	}
     }
     
     public int getPoints(){
@@ -73,12 +85,49 @@ public class Timer extends Task<String>{
         this.started = false;
     }
     
+    public void getCaches() {
+    	try {
+    		con = DBUtil.connection();
+    		ps = con.prepareStatement("SELECT * FROM Cache;");
+    		rs = ps.executeQuery();
+    		while(rs.next()) {
+    			timeCache = rs.getInt("TimeCache");
+    			projectCache = rs.getInt("IdProject");
+    		}
+    	}catch(SQLException e) {
+    		Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("getCaches method: SQLException");
+            alert.setContentText(e.getMessage());
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("alert.css").toString());
+            alert.showAndWait();
+    	}
+    }
+    
+    public void resetCaches() {
+	    try {
+			con = DBUtil.connection();
+			ps = con.prepareStatement("UPDATE Cache SET TimeCache=? ,IdProject=? WHERE IdCache = 1");
+			ps.setInt(1, 0);
+			ps.setString(2, null);
+			ps.executeUpdate();
+		}catch(SQLException e) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+	        alert.setHeaderText("getCaches method: SQLException");
+	        alert.setContentText(e.getMessage());
+	        alert.getDialogPane().getStylesheets().add(getClass().getResource("alert.css").toString());
+	        alert.showAndWait();
+		}
+    }
+    
+    
     @Override
     protected String call() throws Exception {
+    	int i = 0;
         while(started){
+        	
             Thread.sleep(1000);
-            
             elapsedTime=elapsedTime-1000;
+            i++;
             hours = (int) Math.floor(elapsedTime/3600000);
             minutes = (int) Math.floor(elapsedTime/60000) % 60;
             seconds = (int) Math.floor(elapsedTime/1000)%60;
@@ -88,6 +137,15 @@ public class Timer extends Task<String>{
             seconds_string = String.format("%02d", seconds);
             currentTime = (hours_string+" : "+minutes_string+" : "+seconds_string);
             updateValue(currentTime);
+            
+            if(i>=60){
+            	con = DBUtil.connection();
+            	ps = con.prepareStatement("UPDATE Cache SET TimeCache=? ,IdProject=? WHERE IdCache = 1");
+            	ps.setInt(1, (int) elapsedTime);
+            	ps.setInt(2, this.idProject);
+            	ps.executeUpdate();
+            	i = 0;
+            }
             
             if(this.elapsedTime<=1){
                 currentTime = ("00 : 00 : 00");
@@ -106,6 +164,11 @@ public class Timer extends Task<String>{
                     ps.setInt(4, points);
                     ps.setInt(5, idProject);
 
+                    ps.executeUpdate();
+                    
+                    ps = con.prepareStatement("UPDATE Cache SET TimeCache=? , IdProject = ? WHERE IdCache=1");
+                    ps.setInt(1, 0);
+                    ps.setString(2, null);
                     ps.executeUpdate();
                 }catch(SQLException e){
                     Alert alert = new Alert(Alert.AlertType.ERROR);

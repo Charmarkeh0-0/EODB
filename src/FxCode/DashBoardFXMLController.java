@@ -90,6 +90,7 @@ public class DashBoardFXMLController implements Initializable {
         try{
             if(!sliderTimer.isDisable()){
                 timer = new Timer();
+                timer.getCaches();
                 timer.setElapsedTime(sliderTimer.getValue());
                 timer.setDuration((int) sliderTimer.getValue());
                 timer.setPoints((int) (sliderTimer.getValue()*100));
@@ -188,6 +189,7 @@ public class DashBoardFXMLController implements Initializable {
     @FXML
     private void resetTimer(ActionEvent event) {
         timer.pause();
+        timer.resetCaches();
         sliderTimer.setDisable(false);
         btnStart.setDisable(false);
         btnPause.setDisable(true);
