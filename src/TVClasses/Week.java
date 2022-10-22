@@ -88,7 +88,7 @@ public class Week {
     }
     
     public int getTotalDurationW(){
-        return this.totalDurationW;
+        return this.totalDurationW/60;
     }
     public void setTotalDurationW(int x){
         this.totalDurationW = x;

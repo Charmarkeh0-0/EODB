@@ -14,35 +14,6 @@
     -fx-background-color: white;
 }
 
-/* Header*/
-
-#topPane{
-    -fx-background-color: white;
-}
-
-#lblClock{
-    -fx-background-color: gray;
-    -fx-text-fill: white;
-    -fx-background-radius: 0 0 10 10;
-}
-
-#btnOff{
-    -fx-background-color: gray;
-    -fx-background-image:url("../Images/power-off-solid.png");
-    -fx-background-repeat: stretch;   
-    -fx-background-size: 30 30;
-    -fx-background-position: center;
-    -fx-background-radius: 5 5 5 5;
-}
-
-#btnOff:hover{
-    -fx-background-color: #116c51;
-    -fx-background-image:url("../Images/power-off-solidX.png");
-    -fx-background-repeat: stretch;   
-    -fx-background-size: 30 30;
-    -fx-background-position: center;
-    -fx-background-radius: 5 5 5 5;
-}
 /* Timer */
 
 .slider .track{
@@ -61,13 +32,21 @@
 
 #btnAddProject{
     -fx-background-color: gray;
-    -fx-background-radius: 5 5 5 5;
-    -fx-text-fill: white;
+    -fx-background-image: url("../Images/plus-solid.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 15 15;
+    -fx-background-position: center;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.8;
 }
 #btnAddProject:hover{
     -fx-background-color: #116c51;
-    -fx-background-radius: 5 5 5 5;
-    -fx-text-fill: white;
+    -fx-background-image:url("../Images/plus-solidX.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 15 15;
+    -fx-background-position: center;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.8;
 }
 
 #cbProject{
@@ -167,77 +146,88 @@
     -fx-stroke-width: 5px;
 }
 
-/* Footer */
-
-#hBoxBtn{
-    -fx-background-color: gray;
-    -fx-background-radius: 10 10 0 0;
-}
-
 #btnStart{
     -fx-background-color: gray;
-    -fx-background-image:url("../Images/play-solid.png");
+    -fx-background-image: url("../Images/play-solid.png");
     -fx-background-repeat: stretch;   
-    -fx-background-size: 30 30;
+    -fx-background-size: 15 15;
     -fx-background-position: center;
-    -fx-background-radius: 5 5 5 5;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.8;
 }
 #btnStart:hover{
     -fx-background-color: #116c51;
     -fx-background-image:url("../Images/play-solidX.png");
     -fx-background-repeat: stretch;   
-    -fx-background-size: 30 30;
+    -fx-background-size: 15 15;
     -fx-background-position: center;
-    -fx-background-radius: 5 5 5 5;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.8;
+}
+#btnStart:disabled{
+    -fx-background-color: gray;
+    -fx-background-image: url("../Images/play-solid.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 15 15;
+    -fx-background-position: center;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.4;
 }
 
 #btnPause{
     -fx-background-color: gray;
     -fx-background-image:url("../Images/pause-solid.png");
     -fx-background-repeat: stretch;   
-    -fx-background-size: 30 30;
+    -fx-background-size: 15 15;
     -fx-background-position: center;
-    -fx-background-radius: 5 5 5 5;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.8;
 }
 #btnPause:hover{
     -fx-background-color: #116c51;
     -fx-background-image:url("../Images/pause-solidX.png");
     -fx-background-repeat: stretch;   
-    -fx-background-size: 30 30;
+    -fx-background-size: 15 15;
     -fx-background-position: center;
-    -fx-background-radius: 5 5 5 5;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.8;
+}
+#btnPause:disabled{
+    -fx-background-color: gray;
+    -fx-background-image:url("../Images/pause-solid.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 15 15;
+    -fx-background-position: center;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.4;
 }
 
 #btnReset{
     -fx-background-color: gray;
     -fx-background-image:url("../Images/stop-solid.png");
     -fx-background-repeat: stretch;   
-    -fx-background-size: 30 30;
+    -fx-background-size: 15 15;
     -fx-background-position: center;
-    -fx-background-radius: 5 5 5 5;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.8;
 }
 #btnReset:hover{
     -fx-background-color: #116c51;
     -fx-background-image:url("../Images/stop-solidX.png");
     -fx-background-repeat: stretch;   
-    -fx-background-size: 30 30;
+    -fx-background-size: 15 15;
     -fx-background-position: center;
-    -fx-background-radius: 5 5 5 5;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.8;
+}
+#btnReset:disabled{
+    -fx-background-color: gray;
+    -fx-background-image:url("../Images/stop-solid.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 15 15;
+    -fx-background-position: center;
+    -fx-background-radius: 25 25 25 25;
+    -fx-opacity : 0.4;
 }
 
-#btnToDo{
-    -fx-background-color: gray;
-    -fx-background-image:url("../Images/list-check-solid.png");
-    -fx-background-repeat: stretch;   
-    -fx-background-size: 30 30;
-    -fx-background-position: center;
-    -fx-background-radius: 5 5 5 5;
-}
-#btnToDo:hover{
-    -fx-background-color: #116c51;
-    -fx-background-image:url("../Images/list-check-solid.png");
-    -fx-background-repeat: stretch;   
-    -fx-background-size: 30 30;
-    -fx-background-position: center;
-    -fx-background-radius: 5 5 5 5;
-}
+

@@ -42,24 +42,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.stage.StageStyle;
 
 public class DashBoardFXMLController implements Initializable {
-    
-    //Clock 
-    
-    private Clock clock;
-    private Thread th1;
-    public static boolean yepClock = true;
-    
-    @FXML
-    private AnchorPane paneDashBoard;
-    @FXML
-    private HBox topPane;
-    @FXML
-    private Label lblClock;
     
     //Timer 
     
@@ -72,17 +57,13 @@ public class DashBoardFXMLController implements Initializable {
     @FXML
     private Label lblTimer;
     @FXML
-    private StackPane bottomPane;
-    @FXML
-    private HBox hBoxBtn;
-    @FXML
     private Button btnStart;
     @FXML
     private Button btnPause;
     @FXML
     private Button btnReset;
     @FXML
-    private Button btnToDo;
+    private AnchorPane AnchorPane;
     
     @FXML
     private void startTimer(ActionEvent event) {
@@ -727,18 +708,6 @@ public class DashBoardFXMLController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Clock
-        
-        clock = new Clock();
-        clock.valueProperty().addListener(new ChangeListener<String>(){
-            @Override
-            public void changed(ObservableValue<? extends String> ov, String t, String t1) {
-               lblClock.setText(t1);
-            } 
-        });
-        th1 = new Thread(clock);
-        th1.setDaemon(true);
-        th1.start();
         
         //Timer
         
@@ -759,7 +728,6 @@ public class DashBoardFXMLController implements Initializable {
         //Sessions 
         
         updateSession();
-        
         
         //Week 
         
@@ -795,45 +763,4 @@ public class DashBoardFXMLController implements Initializable {
         updateTVYear();
         
     }    
-
-    @FXML
-    private Button btnOff;
-
-    @FXML
-    private void closeApp(ActionEvent event) {
-        
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setHeaderText("Done ?");
-        alert.setContentText("Do you really want to close the app ?");
-        alert.initStyle(StageStyle.UNDECORATED);
-        alert.getDialogPane().getStylesheets().add(getClass().getResource("alert.css").toString());
-        Optional<ButtonType> clickedButton = alert.showAndWait();
-        
-        if(clickedButton.get() == ButtonType.OK){
-            yepClock = false;
-            System.exit(0);
-        }
-    }  
-
-    @FXML
-    private void OpenToDo(ActionEvent event) throws IOException {
-        //Load the fxml and create a new popup dialog
-        FXMLLoader fxmlloader = new FXMLLoader();
-        fxmlloader.setLocation(getClass().getResource("ToDoFXML.fxml"));
-        DialogPane projectDP = null;
-        projectDP = fxmlloader.load();
-        
-
-        //Show the dialog pane
-        Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.setDialogPane(projectDP);
-        dialog.initStyle(StageStyle.UNDECORATED);
-        Optional<ButtonType> clickedButton = dialog.showAndWait();
-
-        //When the ok button is pressed
-        if(clickedButton.get() == ButtonType.CLOSE){
-            updateComboBox();
-            updateTableViewProject();
-        }
-    }
 }

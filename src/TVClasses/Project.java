@@ -98,7 +98,7 @@ public class Project {
     }
     
     public int getDurationProject(){
-        return this.durationProject;
+        return this.durationProject/60;
     }
     public void setDurationProject(int x){
         this.durationProject = x;
